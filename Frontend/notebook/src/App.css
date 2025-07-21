@@ -1,0 +1,18 @@
+/* This only applies when you are on Folderview */
+body.folderview-body {
+  background-color: #1e1e1e;
+  color: white;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #1e1e1e inset; 
+  -webkit-text-fill-color: #ffffff; 
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #1e1e1e inset;
+  -webkit-text-fill-color: #ffffff;
+}

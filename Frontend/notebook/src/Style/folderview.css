@@ -1,0 +1,28 @@
+.editor-wrapper {
+  position: relative; /* ✅ Required */
+  background-color: #1e1e1e;
+  color: white;
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+/* Styled insert image button */
+.image-inside-editor-btn {
+  position: absolute;
+  top: 160px;  
+  right: 40px;
+  z-index: 10;
+  background-color: #222;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.image-inside-editor-btn:hover {
+  background-color: #444;
+}
+
+/*vndosvpsd*/

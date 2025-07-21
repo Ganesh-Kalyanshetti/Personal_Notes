@@ -1,0 +1,140 @@
+/* .background-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../Images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0.2;
+} */
+
+body, .landing-container {
+  margin: 0;
+  padding: 0;
+  background-color: #0d0d0d;
+  position: relative;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  z-index: auto;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.landing-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: transparent;
+}
+
+.side-naming{
+  padding-left: 3rem;
+  font-size: 1.2rem;
+  z-index: 10;
+
+}
+.side-naming h4 {
+  color: white;
+  margin: 0;
+  font-size: 1.2rem;
+  margin: 0px 0px 0px 0px;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-buttons button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* .nav-buttons button:hover {
+  text-decoration: underline;
+} */
+
+.landing-main {
+  padding-top: 17vh;
+  padding-left: 7rem;
+}
+
+.landing-main h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.landing-main p {
+  font-size: 1.2rem;
+  color: #cccccc;
+}
+
+/* Footer */
+.landing-footer {
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* About Modal */
+.about-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.about-content {
+  background-color: #1a1a1a;
+  width: 70vw;
+  padding: 3rem;
+  height: 250px;
+  border-radius: 10px;
+  text-align: center;
+  overflow-y: auto;
+  color: white;
+}
+
+.about-content h4 {
+  margin-bottom: 1rem;
+}
+
+.about-content p {
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.about-content button {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.about-content button:hover {
+  background: #666;
+}

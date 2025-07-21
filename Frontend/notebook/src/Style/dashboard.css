@@ -1,0 +1,279 @@
+.dashboard-container {
+  padding: 2rem;
+  background-color: #1e1e1e;
+  min-height: 100vh;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h3 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.new-folder-btn {
+  background-color: #1f6feb;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.folderbtn {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.new-folder-btn:hover {
+  background-color: #1158c7;
+}
+
+/* Folder creation form */
+.folder-form {
+  background-color: #222020;
+  padding: 1rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.folder-form input[type="text"] {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #555;
+  background-color: #121212;
+  color: white;
+  border-radius: 5px;
+}
+
+.folder-form button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #333;
+  color: white;
+}
+
+.folder-form button:hover {
+  background-color: #444;
+}
+
+/* Folder List */
+.folder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Folder Item */
+.folder-item {
+  background-color: #2a2929;
+  border: 1px solid #333;
+  padding: 1rem;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.folder-name {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  
+}
+
+.folder-name:hover {
+  text-decoration: underline;
+}
+
+.folder-name.disabled {
+  color: #888;
+  pointer-events: none;
+}
+
+.folder-date {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+/* New Folder Popup Overlay */
+.new-folder-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+/* Centered Form Box */
+.folder-form.popup-style {
+  background-color: #1e1e1e;
+  padding: 2rem;
+  border: 1px solid #444;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 90%;
+  max-width: 400px;
+}
+
+/* 3 Dots Button */
+.three-dots-container {
+  position: relative;
+}
+
+.three-dots-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+.three-dots-btn:hover {
+  color: #ccc;
+}
+
+/* Dropdown Menu under 3 dots */
+.dropdown-menu {
+  position: absolute;
+  top: 2.5rem;
+  right: 0;
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 8px;
+  min-width: 120px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 0.7rem 1rem;
+  width: 100%;
+  text-align: left;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background-color: #333;
+  color: #ff4c4c;
+}
+
+/* Delete Mode */
+.folder-item.delete-mode {
+  border-color: #ff4c4c;
+  background-color: #2a0f0f;
+}
+
+.folder-checkbox {
+  margin-right: 1rem;
+  transform: scale(1.3);
+}
+
+/* Delete Controls */
+.delete-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.delete-selected,
+.cancel-delete {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.delete-selected {
+  background-color: #ff4c4c;
+  color: white;
+}
+
+.delete-selected:hover {
+  background-color: #e60000;
+}
+
+.cancel-delete {
+  background-color: #333;
+  color: white;
+}
+
+.cancel-delete:hover {
+  background-color: #444;
+}
+
+/* Confirmation Popup */
+.confirm-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.confirm-box {
+  background-color: #1e1e1e;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px solid #444;
+  text-align: center;
+  max-width: 400px;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.confirm-box button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.confirm-delete {
+  background-color: #ff4c4c;
+  color: white;
+}
+
+.confirm-delete:hover {
+  background-color: #e60000;
+}

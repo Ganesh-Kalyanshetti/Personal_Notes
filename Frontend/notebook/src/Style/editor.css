@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ body {
+  background-color: #1e1e1e; 
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  min-height: 100vh;
+  background-color: #1e1e1e;
+}
+.control-group,
+.control-group .button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+/* Main editor wrapper */
+.editor-wrapper {
+  background-color: #1e1e1e;
+  color: white;
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+/* ProseMirror editor area */
+.ProseMirror {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  min-height: 400px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  outline: none;
+}
+
+/* Headings */
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3,
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6 {
+  color: #ffffff;
+}
+.ProseMirror code{
+  color: #666;
+}
+/* Blockquote */
+.ProseMirror blockquote {
+  border-left: 4px solid #888;
+  padding-left: 1rem;
+  margin-left: 0;
+  font-style: italic;
+  color: white;
+  background-color: #2b2b2b;
+  border-radius: 4px;
+  padding: 0.8rem 1rem;
+}
+
+/* Code block styling - styled like sujith-eag.in */
+.ProseMirror pre {
+  background-color: #363d47;
+  color: #fff;
+  padding: 1rem;
+  border-left: 5px solid #606d75;
+  border-radius: 8px;
+  font-family: 'Fira Code', monospace;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+/* Inline code */
+.ProseMirror code {
+  background-color: #292929;
+  color: #f8f8f2;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Fira Code', monospace;
+}
+/* Fix list alignment inside editor */
+.ProseMirror ul,
+.ProseMirror ol {
+  margin: 1rem 0 1rem 1.5rem;
+  padding-left: 1.2rem;
+}
+
+.ProseMirror li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+
+.control-group {
+  background-color: #2c2c2c;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+
+
+.code-btn {
+  background-color: #666;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.code-btn:hover {
+  background-color: #6f4b4b;
+}
+
+.code-btn.is-active {
+  background-color: #007acc;
+  color: white;
+}
+
+
+z.ProseMirror img {
+  max-width: 100%;
+  display: block;
+  margin: 1rem 0;
+  border-radius: 8px;
+}
+
+/* General button styling */
+.control-group .button-group button {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease-in-out;
+  font-family: inherit; /* default */
+}
+
+/* Code button override */
+.control-group .button-group button.code-btn {
+  font-family: monospace;
+  background-color: #2b2b2b;
+}
+
+/* Hover effect */
+.control-group .button-group button.code-btn:hover {
+  background-color: #3d3d3d;
+}
+
+/* Active code styling (when toggled on) */
+.control-group .button-group button.code-btn.is-active {
+  background-color: #007acc; /* highlight blue */
+  color: white;
+}
+
+/* Insert image button — keep as you said */
+.image-inside-editor-btn {
+  position: relative;
+  top: 150px; 
+  right: 20px;
+  z-index: 10;
+  background-color: #222;
+  color: white;
+  padding: 4px 20px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.image-inside-editor-btn:hover {
+  background-color: #444;
+}

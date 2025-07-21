@@ -1,0 +1,104 @@
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import '../Style/dashboard.css'
+const API = "http://localhost:3000/createfolder";
+const APIS = "http://localhost:3000/getfolders";
+
+function Dashbord() {
+    const token = localStorage.getItem('token');
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const [folders, setFolders] = useState(location.state?.folders || []);
+    const [fetchedOnce, setFetchedOnce] = useState(false);
+    const [showpopup, setshowpopup] = useState(false);
+
+    const [foldername, setfoldername] = useState("");
+    const [msg, setmsg] = useState('');
+
+    useEffect(() => {
+        if (!token) {
+            navigate('/login');
+        }
+    }, [token, navigate]);
+
+
+    useEffect(() => {
+
+        if (!fetchedOnce) {
+            setFetchedOnce(true);
+            axios.get(APIS, { headers: { Authorization: `Bearer ${token}` } })
+                .then(res => {
+                    setFolders(res.data.folders || []);
+                })
+                .catch((e) => {
+                    console.error("Error loading folders after reload", e);
+                });
+        }
+    }, [location.state, fetchedOnce, token]);
+
+    const handlecreate = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post(API, { foldername: foldername }, { headers: { Authorization: `Bearer ${token}` }, })
+
+            const data = res.data;
+
+            setmsg(data.message || `Folder Created`);
+            setFolders([data.folder, ...folders]);
+            setfoldername('');
+            setshowpopup(false);
+            // setFetchedOnce(true);
+        }
+        catch (e) {
+            console.log("Error creating folder:", e);
+            setmsg('Failed to create folder');
+        }
+    }
+    
+    return (
+
+        <div className="dashboard-container">
+            <div className="dashboard-header">
+                <h3>Your Folders</h3>
+                <button className="new-folder-btn" onClick={() => setshowpopup(true)}>New Folder</button>
+            </div>
+           
+
+            {showpopup && (
+                <form className="folder-form" onSubmit={handlecreate}>
+                    <input
+                        type="text"
+                        placeholder='Enter Folder Name'
+                        value={foldername}
+                        onChange={(e) => setfoldername(e.target.value)}
+                    />
+                    <button type='submit'>Create</button>
+                    <button type='button' onClick={() => setshowpopup(false)}>Cancel</button>
+                </form>
+            )}
+            <div className="folder-list">
+                {folders.length === 0 ? (
+                    <p>No folder found.</p>
+                ) : (
+                    folders.map((folder) => (
+                        <div className="folder-item" key={folder._id}>
+                            <Link className="folder-name" to={`/folder/${folder._id}`}>
+                                {folder.foldername}
+                            </Link>
+                            <div className="folder-date">
+                                {new Date(folder.createdAt).toLocaleString()}
+                            </div>
+                        </div>
+                    ))
+                )}
+            </div>
+
+        </div>
+
+    )
+}
+export default Dashbord;
