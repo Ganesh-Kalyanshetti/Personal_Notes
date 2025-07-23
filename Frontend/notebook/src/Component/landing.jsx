@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Style/landing.css'
 import { useEffect } from 'react';
-import '../Images/background.jpg'
+import '../Images/background.jpg';
+
 function Landing() {
     const [showAbout, setShowAbout] = useState(false);
 

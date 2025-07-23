@@ -3,9 +3,12 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import '../Style/dashboard.css';
 
-const API = "http://localhost:3000/createfolder";
-const APIS = "http://localhost:3000/getfolders";
-const DELETE_API = "http://localhost:3000/deletefolders";
+// const API = "http://localhost:3000/createfolder";
+// const APIS = "http://localhost:3000/getfolders";
+// const DELETE_API = "http://localhost:3000/deletefolders";
+const API=`${import.meta.env.VITE_API_URL}/createfolder`;
+const APIS=`${import.meta.env.VITE_API_URL}/getfolders`;
+const DELETE_API=`${import.meta.env.VITE_API_URL}/deletefolders`;
 
 function Dashbord() {
     const token = localStorage.getItem('token');

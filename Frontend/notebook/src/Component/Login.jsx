@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../Style/login.css'
 
+const LOGIN=`${import.meta.env.VITE_API_URL}/login`;
+const  GETFOLDER=`${import.meta.env.VITE_API_URL}/getfolders`;
 
 function Login() {
     const [form, setForm] = useState({ Username: '', Password: '', });
@@ -19,14 +21,14 @@ function Login() {
     const handlesubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:3000/login', form);
+            const res = await axios.post(LOGIN, form);
             const data = res.data;
             setmsg(data.message || 'Login Success');
 
             if (data.token) {
                 localStorage.setItem('token', data.token);
 
-                const folderres = await axios.get('http://localhost:3000/getfolders', { headers: { Authorization: `Bearer ${data.token}` }, });
+                const folderres = await axios.get(GETFOLDER, { headers: { Authorization: `Bearer ${data.token}` }, });
 
                 const folders = folderres.data.folders || [];
 
