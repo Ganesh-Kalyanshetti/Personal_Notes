@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 
 const mongoose = require('mongoose');
-const mongostring = process.env.DB_url;
+const mongostring = process.env.DB_URL;
 app.use(express.json());
 const port=3000;
 
