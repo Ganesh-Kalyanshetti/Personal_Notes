@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import '../Style/register.css';
 import.meta.env.VITE_API_URL
 
-// const API = "http://localhost:3000/register";
 const API =`${import.meta.env.VITE_API_URL}/register`
 
 function Registration() {
