@@ -97,7 +97,7 @@ function Folderview() {
       
       <button onClick={insertImage} className="image-inside-editor-btn">📷 Add Image</button>
       <br />
-      <button onClick={handleSave}  className='Savebtn' > 📁Save changes</button>
+      <button onClick={handleSave}  className='Savebtn' > Save changes</button>
     </div>
 
   );
