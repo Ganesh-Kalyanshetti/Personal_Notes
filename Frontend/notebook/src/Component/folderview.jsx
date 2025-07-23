@@ -4,10 +4,6 @@ import { useParams } from 'react-router-dom'
 import Editor from './editor'
 import '../Style/folderview.css'
 
-// const SAVE = 'http://localhost:3000/createfolder'
-// const PAGE = 'http://localhost:3000/createfolder'
-// const UPLOAD_IMAGE = 'http://localhost:3000/upload-content'
-
 const SAVE = `${import.meta.env.VITE_API_URL}/createfolder`;
 const PAGE = `${import.meta.env.VITE_API_URL}/createfolder`;
 const UPLOAD_IMAGE = `${import.meta.env.VITE_API_URL}/upload-content`;
