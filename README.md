@@ -1,4 +1,4 @@
-## Personal Notes App
+## ✍️ Turn your ideas into organized notes — with words and images.
 
 A simple full-stack note-taking application that allows users to create, organize, and manage personal notes. Users can also add images to their notes for better visualization and organization.
 
