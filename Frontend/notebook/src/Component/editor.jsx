@@ -41,6 +41,35 @@ const MenuBar = ({ editor }) => {
   )
 }
 
+useEffect(() => {
+  let lastScrollY = window.scrollY
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY
+    const toolbar = document.querySelector('.control-group')
+
+    if (!toolbar) return
+
+    const selection = editor?.state?.selection
+    const hasSelection = selection && !selection.empty
+
+    if (currentScrollY < lastScrollY && hasSelection) {
+      toolbar.classList.add('show-toolbar')
+    } else {
+      toolbar.classList.remove('show-toolbar')
+    }
+
+    lastScrollY = currentScrollY
+  }
+
+  window.addEventListener('scroll', handleScroll)
+
+  return () => {
+    window.removeEventListener('scroll', handleScroll)
+  }
+}, [editor])
+
+
 // ✅ Final Editor component (with forwardRef)
 const Editor = forwardRef(({ content = '', onContentChange }, ref) => {
   const editor = useEditor({
