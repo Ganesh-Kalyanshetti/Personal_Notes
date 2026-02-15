@@ -41,32 +41,6 @@ const MenuBar = ({ editor }) => {
   )
 }
 
-useEffect(() => {
-  let lastScrollY = window.scrollY
-  const toolbar = document.querySelector('.control-group')
-
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY
-
-    if (!toolbar) return
-
-    if (currentScrollY > lastScrollY) {
-      // scrolling down → hide
-      toolbar.classList.add('hide-toolbar')
-    } else {
-      // scrolling up → show
-      toolbar.classList.remove('hide-toolbar')
-    }
-
-    lastScrollY = currentScrollY
-  }
-
-  window.addEventListener('scroll', handleScroll)
-
-  return () => {
-    window.removeEventListener('scroll', handleScroll)
-  }
-}, [])
 
 
 // ✅ Final Editor component (with forwardRef)
@@ -101,7 +75,35 @@ const Editor = forwardRef(({ content = '', onContentChange }, ref) => {
   }))
 
   if (!editor) return null
+  
+useEffect(() => {
+  let lastScrollY = window.scrollY
+  const toolbar = document.querySelector('.control-group')
 
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY
+
+    if (!toolbar) return
+
+    if (currentScrollY > lastScrollY) {
+      // scrolling down → hide
+      toolbar.classList.add('hide-toolbar')
+    } else {
+      // scrolling up → show
+      toolbar.classList.remove('hide-toolbar')
+    }
+
+    lastScrollY = currentScrollY
+  }
+
+  window.addEventListener('scroll', handleScroll)
+
+  return () => {
+    window.removeEventListener('scroll', handleScroll)
+  }
+}, [])
+
+  
   useEffect(() => {
     if (editor && content && editor.getHTML() !== content) {
       editor.commands.setContent(content)
