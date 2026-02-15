@@ -112,19 +112,23 @@
   gap: 8px;
 }
 
-/* Floating toolbar behavior */
 .control-group {
-  position: fixed;
-  top: -80px; /* hidden by default */
-  left: 0;
-  width: 100%;
-  z-index: 999;
-  transition: top 0.25s ease-in-out;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #2c2c2c;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  transition: transform 0.25s ease-in-out;
 }
 
-/* Show toolbar */
-.control-group.show-toolbar {
-  top: 0;
+/* Hidden state */
+.control-group.hide-toolbar {
+  transform: translateY(-120%);
 }
 
 
