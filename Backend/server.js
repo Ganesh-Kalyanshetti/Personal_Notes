@@ -1,3 +1,7 @@
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+
+
 const express = require('express');
 require('dotenv').config();
 const userroute = require('./Main/routes/RegisterNLogin');

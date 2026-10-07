@@ -4,13 +4,12 @@ import StarterKit from '@tiptap/starter-kit'
 import TextStyle from '@tiptap/extension-text-style'
 import Color from '@tiptap/extension-color'
 import ListItem from '@tiptap/extension-list-item'
-import Image from '@tiptap/extension-image'
 import '../Style/editor.css'
 import { useEffect } from 'react'
 import { ResizableImage } from './resizeable'
 
 // ✅ Updated MenuBar to accept editor as prop
-const MenuBar = ({ editor }) => {
+const MenuBar = ({ editor, onAddImage }) => {
   if (!editor) return null
 
   return (
@@ -37,6 +36,9 @@ const MenuBar = ({ editor }) => {
         <button onClick={() => editor.chain().focus().setColor('#669a53ff').run()} className={editor.isActive('textStyle', { color: '#100885ff' }) ? 'is-active' : ''}>Blue</button>
         <button onClick={() => editor.chain().focus().clearNodes().run()}>Clear Style</button>
       </div>
+        <button type="button" onClick={onAddImage} className="image-inside-editor-btn">
+          📷 Add Image
+        </button>
     </div>
   )
 }
@@ -44,8 +46,9 @@ const MenuBar = ({ editor }) => {
 
 
 // ✅ Final Editor component (with forwardRef)
-const Editor = forwardRef(({ content = '', onContentChange }, ref) => {
+const Editor = forwardRef(({ content = '', onContentChange, onAddImage, folderTitle, isEditing, onRequestEdit }, ref) => {
   const editor = useEditor({
+    editable: isEditing,
     extensions: [
       Color.configure({ types: [TextStyle.name, ListItem.name] }),
       TextStyle.configure({ types: [ListItem.name] }),
@@ -69,52 +72,40 @@ const Editor = forwardRef(({ content = '', onContentChange }, ref) => {
     editor,
     insertImage: (url) => {
       if (editor) {
-        editor.chain().focus().setImage({ src: url, style: 'width:300px' }).run()
+      editor.chain().focus().setImage({ src: url, width: '300px' }).run()
       }
     }
   }))
 
-  if (!editor) return null
-  
-useEffect(() => {
-  let lastScrollY = window.scrollY
-  const toolbar = document.querySelector('.control-group')
+  useEffect(() => {
+    editor?.setEditable(isEditing)
+  }, [editor, isEditing])
 
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY
-
-    if (!toolbar) return
-
-    if (currentScrollY > lastScrollY) {
-      // scrolling down → hide
-      toolbar.classList.add('hide-toolbar')
-    } else {
-      // scrolling up → show
-      toolbar.classList.remove('hide-toolbar')
-    }
-
-    lastScrollY = currentScrollY
-  }
-
-  window.addEventListener('scroll', handleScroll)
-
-  return () => {
-    window.removeEventListener('scroll', handleScroll)
-  }
-}, [])
-
-  
   useEffect(() => {
     if (editor && content && editor.getHTML() !== content) {
       editor.commands.setContent(content)
     }
   }, [content, editor])
 
+  if (!editor) return null
+
   return (
     <>
-      <MenuBar editor={editor} />
-      <EditorContent editor={editor} />
-      {/* <img src="..." width="300" /> */}
+      <div className="editor-sticky-header">
+        <div className="folder-title-row">
+          <h2 className="folder-title">{folderTitle}</h2>
+          {!isEditing && (
+            <button type="button" className="edit-note-btn" onClick={onRequestEdit}>
+              Edit
+            </button>
+          )}
+        </div>
+        {isEditing && <MenuBar editor={editor} onAddImage={onAddImage} />}
+      </div>
+
+      <div className="editor-content-section">
+        <EditorContent editor={editor} />
+      </div>
 
     </>
   )

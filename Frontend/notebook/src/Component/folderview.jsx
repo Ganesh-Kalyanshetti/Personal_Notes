@@ -13,6 +13,8 @@ function Folderview() {
   const [text, setText] = useState('')
   const [foldername, setFoldername] = useState('');
   const [isLoaded, setIsLoaded] = useState(false)
+  const [isEditing, setIsEditing] = useState(false)
+  const [showEditConfirmation, setShowEditConfirmation] = useState(false)
   const token = localStorage.getItem('token')
   const editorRef = useRef()
 
@@ -81,6 +83,7 @@ function Folderview() {
       })
 
       alert('Saved!')
+      setIsEditing(false)
 
     } catch (err) {
       console.error('Save failed:', err)
@@ -90,14 +93,53 @@ function Folderview() {
   return (
 
     <div className="editor-wrapper">
-
-      <h2>Folder {foldername}</h2>
-      <br />
-      <Editor ref={editorRef} content={text} onContentChange={setText} />
-      
-      <button onClick={insertImage} className="image-inside-editor-btn">📷 Add Image</button>
-      <br />
-      <button onClick={handleSave}  className='Savebtn' > Save changes</button>
+      {isLoaded && (
+        <>
+          <Editor
+            ref={editorRef}
+            content={text}
+            onContentChange={setText}
+            onAddImage={insertImage}
+            folderTitle={foldername}
+            isEditing={isEditing}
+            onRequestEdit={() => setShowEditConfirmation(true)}
+          />
+          {isEditing && (
+            <button onClick={handleSave} className="Savebtn">Save changes</button>
+          )}
+          {showEditConfirmation && (
+            <div
+              className="edit-confirmation-backdrop"
+              role="presentation"
+              onClick={() => setShowEditConfirmation(false)}
+            >
+              <section
+                className="edit-confirmation"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="edit-confirmation-title"
+                onClick={(event) => event.stopPropagation()}
+              >
+                <h2 id="edit-confirmation-title">Do you want to edit this note?</h2>
+                <div className="edit-confirmation__actions">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowEditConfirmation(false)
+                      setIsEditing(true)
+                    }}
+                  >
+                    Yes
+                  </button>
+                  <button type="button" onClick={() => setShowEditConfirmation(false)}>
+                    No
+                  </button>
+                </div>
+              </section>
+            </div>
+          )}
+        </>
+      )}
     </div>
 
   );
