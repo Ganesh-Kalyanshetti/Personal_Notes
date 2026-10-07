@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Style/landing.css'
 import { useEffect } from 'react';
-import '../Images/background.jpg';
 
 function Landing() {
     const [showAbout, setShowAbout] = useState(false);
@@ -14,11 +13,6 @@ function Landing() {
 
     return (
         <div className="landing-container">
-
-            {/* <div className="background-img" /> */}
-            <div>
-                <img src="backgroung.jpg" alt="" />
-            </div>
             <div className="landing-nav">
                 <div className="side-naming">
                     <h4><b>Personal Notes</b></h4>

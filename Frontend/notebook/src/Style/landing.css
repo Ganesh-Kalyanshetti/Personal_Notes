@@ -1,21 +1,9 @@
-/* .background-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('../Images/background.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1;
-  opacity: 0.2;
-} */
-
 body, .landing-container {
   margin: 0;
   padding: 0;
-  background-color: #0d0d0d;
+  background:
+    /* linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.58)), */
+    url('../Images/background.jpg') center / cover no-repeat;
   position: relative;
   color: white;
   font-family: 'Segoe UI', sans-serif;
@@ -40,6 +28,7 @@ body, .landing-container {
 .side-naming{
   padding-left: 3rem;
   font-size: 1.2rem;
+  
   z-index: 10;
 
 }
@@ -78,8 +67,10 @@ body, .landing-container {
 }
 
 .landing-main p {
-  font-size: 1.2rem;
-  color: #cccccc;
+  font-size: 1.5rem;
+  padding-top: 0;
+  font-weight: 25px;
+  color: white;
 }
 
 /* Footer */
